@@ -4,6 +4,8 @@ const expressEdge = require("express-edge");
 const path = require("path");
 const Post = require("./models/post");
 const fileUpload = require("express-fileupload");
+const bodyParser = require("body-parser");
+
 //controllers
 const homePageGet = require("./controllers/homePageGet");
 const postRedirect = require("./controllers/postRedirect");
@@ -12,8 +14,10 @@ const postsCreateGet = require("./controllers/postsCreateGet");
 const postsCreatePost = require("./controllers/postsCreatePost");
 const errorGet = require("./controllers/errorGet");
 const registerGet = require("./controllers/registerGet");
+const registerPost = require("./controllers/registerPost");
 //middlewares
 const CreateMiddleWare = require("./middlewares/CreateMiddleWare");
+
 mongoose.connect(
   "mongodb+srv://Fazliddin:86bfEstYxB0mtXdy@cluster0.adgdxlm.mongodb.net/?retryWrites=true&w=majority",
   () => console.log("Database connected")
@@ -26,6 +30,7 @@ app.use(express.static("public"));
 app.use(expressEdge.engine);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 app.set("views", `${__dirname}/views`);
 
@@ -36,6 +41,8 @@ app.get("/post/:id", postFindParams);
 app.get("/posts/new", postsCreateGet);
 
 app.post("/posts/create", CreateMiddleWare, postsCreatePost);
+app.post("/auth/register", registerPost);
+
 app.get("*", errorGet);
 
 app.listen(5000, () => {
