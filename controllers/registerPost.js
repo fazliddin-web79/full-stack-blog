@@ -17,6 +17,8 @@ module.exports = async (req, res) => {
     res.json({ error: "Password is too short, aleast 6 simbol" });
   }
 
+  //redvervler
+
   User.create({ username, password, email }, async (err, post) => {
     if (err) throw console.log(err);
     res.status(200);
