@@ -1,4 +1,4 @@
-const registrForm = document.getElementById("register-Form");
+const registrForm = document.querySelector("#register-Form");
 
 registrForm.addEventListener("submit", async (event) => {
   event.preventDefault();
@@ -8,6 +8,7 @@ registrForm.addEventListener("submit", async (event) => {
   const username = document.getElementById("username").value;
 
   const result = {};
+
   await fetch("/auth/register", {
     method: "POST",
     headers: {
@@ -28,7 +29,12 @@ registrForm.addEventListener("submit", async (event) => {
     });
 
   const errorText = document.getElementById("error-text");
+  const successText = document.getElementById("error-succes");
 
-  if (result.status === 400) errorText.innerHTML = "* " + result.data.error;
-  if (result.status === 200) window.location.href = "/";
+  if (result.status === 400 || result.status === 401)
+    errorText.innerHTML = "* " + result.data.error;
+  if (result.status === 200) {
+    successText.innerHTML = result.data.data;
+    window.location.href = "/";
+  }
 });

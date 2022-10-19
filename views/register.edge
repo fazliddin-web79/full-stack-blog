@@ -22,21 +22,24 @@ style="background-image: url('/assets/img/home-bg.jpg')"
     <div class="col-md-8 offset-md-2">
 <form id="register-Form">
 <div class="form-floating">
-  <input id="username" type="text" class="form-control" name="username" placeholder="enter your name">
+  <input required id="username" type="text" class="form-control" name="username" placeholder="enter your name">
   <label>Username</label>
 </div>
 <div class="form-floating">
-  <input id="email" type="email" class="form-control" name="email" placeholder="enter your email">
+  <input id="email" required type="email" class="form-control" name="email" placeholder="enter your email">
   <label>Email</label>
 
 </div>
 <div class="form-floating">
-  <input id="password" type="password" class="form-control" name="password" placeholder="enter Password ...">
+  <input required id="password" type="password" class="form-control" name="password" placeholder="enter Password ...">
   <label>Password</label>
 
 </div>
 <div class="form-floating">
   <p class="text-danger" id="error-text"></p>
+</div>
+<div class="form-floating">
+  <p class="text-success" id="error-success"></p>
 </div>
 
 <div class="form-group text-center my-4">
