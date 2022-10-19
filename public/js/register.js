@@ -30,4 +30,5 @@ registrForm.addEventListener("submit", async (event) => {
   const errorText = document.getElementById("error-text");
 
   if (result.status === 400) errorText.innerHTML = "* " + result.data.error;
+  if (result.status === 200) window.location.href = "/";
 });
