@@ -16,6 +16,8 @@ const errorGet = require("./controllers/errorGet");
 const registerGet = require("./controllers/registerGet");
 const registerPost = require("./controllers/registerPost");
 const loginGet = require("./controllers/loginGet");
+const loginPost = require("./controllers/loginPost");
+
 //middlewares
 const CreateMiddleWare = require("./middlewares/CreateMiddleWare");
 
@@ -44,6 +46,7 @@ app.get("/login", loginGet);
 
 app.post("/posts/create", CreateMiddleWare, postsCreatePost);
 app.post("/auth/register", registerPost);
+app.post("/auth/login", loginPost);
 
 app.get("*", errorGet);
 

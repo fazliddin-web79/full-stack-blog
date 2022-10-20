@@ -26,8 +26,7 @@ module.exports = async (req, res) => {
       return (
         res.status(401), res.json({ error: "This Username already axist !!!" })
       );
-    }
-    res.status(200);
-    res.json({ data: "User Succesfully register" });
+    } else
+      return res.status(200), res.json({ data: "User Succesfully register" });
   });
 };
